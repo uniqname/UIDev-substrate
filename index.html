@@ -96,7 +96,10 @@
     
     <!-- Add fancyBox main JS and CSS files -->
 	<script type="text/javascript" src="assets/js/jquery.fancybox.js?v=2.1.4"></script>
-    <link href="assets/css/jquery.fancybox.css" rel="stylesheet"> 
+    <script src="assets/js/jquery.fancybox-thumbs.js?v=2.1.4" type="text/javascript"></script>
+    
+	<link rel="stylesheet" type="text/css" href="assets/css/jquery.fancybox.css?v=2.1.4" media="screen" />
+    <link href="assets/css/jquery.fancybox-thumbs.css?v=2.1.4" type="text/css" rel="stylesheet" />
     
 	<script>
 	
@@ -111,9 +114,23 @@
 				    If one of these fields is empty display nothing.
 				    Adding crop class to manage height of Fox image. */
 				$.each(data.photos, function() {
-					  var output = "<div class='span4'><a class='fancybox' rel='group' href='" +this.src + "' title='" + ((this.description) || "") + " " + (this.attribution || "") + "'><img src='" + this.src + "'></a></span>";
+					  var output = "<div class='span4'><a class='fancybox-thumb' rel='fancybox-thumb' href='" +this.src + "' title='" + ((this.description).replace("'", "&#39;") || "") + " " + (this.attribution || "") + "'><img src='" + this.src + "'></a></span>";
                 $('#gallery').append(output);
-				$(".fancybox").fancybox();
+				
+				// Adding fancybox thumb to make navigation easier and display wrapped descriptions 
+				$(".fancybox-thumb").fancybox({
+					prevEffect	: 'none',
+					nextEffect	: 'none',
+					helpers	: {
+						title	: {
+							type: 'outside'
+						},
+						thumbs	: {
+							width	: 50,
+							height	: 50
+						}
+					}
+				});
 			});
 			
 		 	},
