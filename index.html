@@ -22,12 +22,7 @@
 			text-transform:uppercase;
 		}
 		
-		img {
-			 background: none repeat scroll 0 0 white;
-    		border: 1px solid #BBBBBB;
-			padding: 5px;
-			}
-				
+	  
       @media (max-width: 980px) {
         /* Enable use of floated navbar text */
         .navbar-text.pull-right {
@@ -37,7 +32,14 @@
         }
 		
       }
-    </style>
+	  
+	   @media (max-width: 767px) {
+		 /* Making sure image doesn't crop */  
+		.crop {
+			height:100%!important;  
+	  }
+	
+	</style>
     
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -91,7 +93,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="assets/js/jquery.dotdotdot-1.5.6.js"></script>
   
 	<script>
 	
@@ -102,22 +103,30 @@
               cache: false,
 			  dataType: "json",
 			  success: function(data) {
-				
+				/*  Display url attribution, title and description. 
+				    If one of these fields is empty display nothing.
+				    Adding crop class to manage height of Fox image. */
 				$.each(data.photos, function() {
-					  var output = "<div class='span4'><img src='" + this.src + "'><br/><p>" + this.attribution + "</p><h1>" + this.title + "</h1><p>" + this.description + "</p></span>";
+					  var output = "<div class='span4'><div class='crop'><img src='" + this.src + "'></div><br/><p>" + (this.attribution || "") + "</p><h1>" + (this.title || "") + "</h1><p>" + (this.description || "") + "</p></span>";
                 $('#gallery').append(output);
+				
+				// Setting the height of the first image to the height of the "crop" to clip taller images.
+				var hgt = $('img').height() 
+				$('.crop').css('height', hgt).css('overflow', 'hidden');
+				
+				// Dynamically setting the height on resize of window.
+				$(window).resize(function() {
+					$('.crop').css('height', hgt).css('overflow', 'hidden');
+				});
+			  
 			});
 			
-			  },
+		 	},
 			  error: function (request, status, error) { alert(status + ", " + error); }
 			});
-		
-		
+	
 	});
-		
     </script>
-    
-    
 
   </body>
 </html>
