@@ -113,8 +113,9 @@
 				/*  Display url attribution, title and description. 
 				    If one of these fields is empty display nothing.
 				    Adding crop class to manage height of Fox image. */
+					
 				$.each(data.photos, function() {
-					  var output = "<div class='span4'><a class='fancybox-thumb' rel='fancybox-thumb' href='" +this.src + "' title='" + ((this.description).replace("'", "&#39;") || "") + " " + (this.attribution || "") + "'><img src='" + this.src + "'></a></span>";
+					  var output = "<div class='span4'><a class='fancybox-thumb' rel='fancybox-thumb' href='" +this.src + "' title='" + ((this.description) || "") + " " + (this.attribution || "") + "'><img src='" + this.src + "'></a></span>";
                 $('#gallery').append(output);
 				
 				// Adding fancybox thumb to make navigation easier and display wrapped descriptions 
@@ -136,8 +137,6 @@
 		 	},
 			  error: function (request, status, error) { alert(status + ", " + error); }
 			});
-			
-			
 	
 	});
     </script>
