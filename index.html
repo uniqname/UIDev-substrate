@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+		<!-- Meta -->
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title><!-- Will be set based on the gallery title in JSON -->
+        <meta name="description" content="Responsive Image Gallery">
+        <meta name="viewport" content="width=device-width">
+
+		<!-- Load CSS -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/main.css">
+		<!-- Load Scripts -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+		<script src="js/gallery.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+		<div id="gallery"><ul></ul></div> <!-- Most of the html for the gallery will be injected -->
+		<script src="js/jquery.isotope.min.js"></script> <!-- If you can, load scripts at end for a small speed up -->
+	</body>
+</html>
