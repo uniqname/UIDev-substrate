@@ -28,9 +28,9 @@ var gallery = {
 				 * Also, I was pondering if I should use a templating engine, but decided 
 				 * on not using one, mainly due to the unneeded overhead
 				 */
-				var html = '<li class="gallery-list" data-id="' + key + '"><figure><div class="glass"></div><img class="gallery-image" src="' + img.src + '" alt="' + gallery.f.getImgTitle(img) + '" /><figcaption>' + gallery.f.getImgTitle(img) + '</figcaption></figure></li>';
+				var html = '<li class="gallery-list" data-id="' + key + '"><figure><div class="glass"></div><a href="' + img.src + '"><img class="gallery-image" src="' + img.src + '" alt="' + gallery.f.getImgTitle(img) + '" /></a><figcaption>' + gallery.f.getImgTitle(img) + '</figcaption></figure></li>';
 				$('#gallery ul').append(html);
-				$('li[data-id="' + key + '"]').data(img); //Save the rest of the data
+				$('li[data-id="' + key + '"]').data(img); //Save the data
 			},
 			getImgTitle: function(img) {
 				if(img.title) {
@@ -41,20 +41,59 @@ var gallery = {
 				}
 			},
 			eventBinder: function() {
+			//Using this to bind the events for different clicks and hovers
 				$('.gallery-list').on('mouseenter', function() {
 					$(this).find('.glass').stop().animate({
-						opacity : 0.8
+						opacity: 0.8
 					}, 500);
 				});
 				$('.gallery-list').on('mouseleave', function() {
 					$(this).find('.glass').stop().animate({
-						opacity : 0
+						opacity: 0
 					}, 500);
 				});
 				$('.gallery-list').on('click', function(e) {
 					e.preventDefault();
-					console.log('click!');
+					var src = $(this).find('img').attr('src');
+					var title = $(this).find('img').attr('alt');
+					var data = $(this).data();
+					var arr = [];
+					arr.push('<li>title: ' + title + '</li>');
+					for(i in data) { //Output the data
+						switch(i) {
+							case 'description':
+								arr.push('<li>' + i + ': ' + data[i] + '</li>');
+								break;
+							case 'attribution':
+								arr.push('<li>' + i + ': ' + data[i] + '</li>');
+								break;
+							case 'creation-data':
+								arr.push('<li>' + i + ': ' + data[i] + '</li>');
+								break;
+						}
+					}
+					var html = '<div id="gallery-container"><div id="gallery-overlay"></div><div id="gallery-largeImg">'
+								+ '<div id="gallery-close">X</div>'
+								+ '<img src="' + src + '" alt="' + title + '"/>'
+								+ '<div id="gallery-info"><ul>' + arr.join("") + '</ul></div></div></div>';
+					$('body').prepend(html);
 				});
+				$('body').on('mouseenter','#gallery-largeImg', function() {
+					$('#gallery-info').stop().animate({
+						top: eval(window.innerHeight - $('#gallery-info').height()),
+						opacity: 0.75
+					}, 800);
+				});
+				$('body').on('mouseleave','#gallery-largeImg', function() {
+					$('#gallery-info').stop().animate({
+						top: "100%",
+						opacity: 0
+					}, 800);
+				});
+				$('body').on('click','#gallery-close', function() {
+					$('#gallery-overlay').remove();
+					$('#gallery-largeImg').remove();
+				});	
 			}
 		}
 	}) ()

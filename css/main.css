@@ -101,9 +101,11 @@ textarea {
 
  /* MAIN @screen (any width) */
 
-body {
+html, body {
 	font-size: 13px;
 	text-align: center;
+	width: 100%;
+	height: 100%;
 }
 
 #gallery {
@@ -112,6 +114,8 @@ body {
 
 #gallery ul {
 	list-style-type: none;
+	width: 88%;
+	margin: 0 auto;
 }
 
 .gallery-image {
@@ -126,6 +130,7 @@ body {
 	border: 1px solid #eee;
 	margin: 5px;
 	position: relative;
+	cursor: pointer;
 }
 
 .glass {
@@ -133,8 +138,75 @@ body {
 	width: 100%;
 	height: 100%;
 	opacity: 0;
-	background: black url('../images/mglass.png') 1% no-repeat;
+	background: black url('../images/mglass.png') center no-repeat;
 }
+
+#gallery-container {
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#gallery-overlay {
+	position: absolute;
+	opacity: 0.8;
+	background: black;
+	width: 100%;
+	height: 100%;
+	z-index: 777 !important;
+	zoom: 1;
+}
+
+#gallery-largeImg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 888 !important;
+	zoom: 1;
+	text-align: center;
+}
+
+#gallery-largeImg img {
+	max-width: 94%;
+	max-height: 100%;
+	border: 1px solid #eee;
+	margin: 10px;
+}
+
+#gallery-info {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	zoom: 1;
+	z-index: 999 !important;
+	background-color: black;
+	opacity: 0.75;
+	color: white;
+	text-align: left;
+	font-size: 80%;
+}
+
+#gallery-info ul {
+	list-style-type: none;
+	padding: 15px;
+}
+#gallery-info li:first-letter {
+	text-transform:capitalize;
+}
+
+#gallery-close {
+	font-size: 120%;
+	color: white;
+	position: absolute;
+	z-index: 1000 !important;
+	right: 0;
+	top: 0;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
+
 /* ==========================================================================
    Isotope
    ========================================================================== */
@@ -295,12 +367,29 @@ body {
 
 /* ==========================================================================
    Media Queries for Responsive Design.
-   Theses examples override the primary ('mobile first') styles.
-   Modify as content requires.
+   I decided to go the Mobile first route
    ========================================================================== */
-
-@media only screen and (min-width: 35em) {
+/* IPAD */
+@media only screen and (min-width: 720px) {
     /* Style adjustments for viewports that meet the condition */
+
+	#gallery-info {
+		font-size: 90%;
+	}
+}
+/* LT>IPAD */
+@media only screen and (min-width: 1024px) {
+    /* Style adjustments for viewports that meet the condition */
+	
+	#gallery-info {
+		font-size: 100%;
+		opacity: 0;
+		top: 100%;
+		bottom: auto;
+	}
+}
+
+	
 }
 
 @media print,
