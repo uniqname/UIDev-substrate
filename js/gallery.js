@@ -1,5 +1,4 @@
 var gallery = {
-	updated: 0,
 	f: (function() {
 		return {			
 			init: function() {
@@ -10,6 +9,11 @@ var gallery = {
 							gallery.f.createImg(key, img);
 						}
 					});
+					$('#gallery ul').isotope({
+						itemSelector : '.gallery-list',
+						layoutMode : 'masonry'
+					});
+					gallery.f.eventBinder();
 				});
 			},
 			createImg: function(key, img) {
@@ -24,7 +28,7 @@ var gallery = {
 				 * Also, I was pondering if I should use a templating engine, but decided 
 				 * on not using one, mainly due to the unneeded overhead
 				 */
-				var html = '<li data-id="' + key + '"><figure><img class="gallery-image" src="' + img.src + '" alt="' + gallery.f.getImgTitle(img) + '" /><figcaption>' + gallery.f.getImgTitle(img) + '</figcaption></figure></li>';
+				var html = '<li class="gallery-list" data-id="' + key + '"><figure><div class="glass"></div><img class="gallery-image" src="' + img.src + '" alt="' + gallery.f.getImgTitle(img) + '" /><figcaption>' + gallery.f.getImgTitle(img) + '</figcaption></figure></li>';
 				$('#gallery ul').append(html);
 				$('li[data-id="' + key + '"]').data(img); //Save the rest of the data
 			},
@@ -35,6 +39,22 @@ var gallery = {
 				else {
 					return img.src.substr(img.src.lastIndexOf("/")+1);
 				}
+			},
+			eventBinder: function() {
+				$('.gallery-list').on('mouseenter', function() {
+					$(this).find('.glass').stop().animate({
+						opacity : 0.8
+					}, 500);
+				});
+				$('.gallery-list').on('mouseleave', function() {
+					$(this).find('.glass').stop().animate({
+						opacity : 0
+					}, 500);
+				});
+				$('.gallery-list').on('click', function(e) {
+					e.preventDefault();
+					console.log('click!');
+				});
 			}
 		}
 	}) ()
