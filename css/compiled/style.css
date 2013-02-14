@@ -378,7 +378,8 @@ body {
 
 .container {
   max-width: 940px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
   .container h1 {
     font-size: 32px;
     color: #b6b6b6;
@@ -388,7 +389,7 @@ body {
     color: #b6b6b6;
     margin: 0 0 10px 0; }
   .container .gal {
-    width: 100%;
+    max-width: 100%;
     border: 12px solid rgba(0, 0, 0, 0.17); }
   .container .buttons {
     text-align: center;
