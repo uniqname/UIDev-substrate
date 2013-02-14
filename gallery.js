@@ -19,10 +19,13 @@
      * Controllers
      ***************************************************************************/
      
+     //	First load the Json file 
+     
      gallery.loader = function(){
      	$.getJSON('gallery.json', displayImages);
      	
      	function displayImages(data){
+     		//	Arrays that will contain json data
      		var currentPosition = 0;
      		var imageArray = [];
      		var headerArray = [];
@@ -34,11 +37,13 @@
      			authorArray.push(data.photos[i].attribution);
      		});
      		
+     		//	Initialize images and text 
      		$('img.gal').attr('src', imageArray[0]);
      		$('.container h1').text(headerArray[0]);
      			$('.container h2').text(authorArray[0]);
-     		$('.container h1').text()
-     		
+     			
+     			
+			//	Click handlers for next and previous button.     		
      		$('#nextBtn').on('click', function(){
      			currentPosition++;
      			$('img.gal').attr('src', imageArray[currentPosition]);
