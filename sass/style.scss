@@ -55,7 +55,7 @@ body {
   background: $secondary-color;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 14px;
-  color: $primary-color; // Covering my bases in case there is a user defined background color other than white
+  color: $primary-color; 
 
   @include breakpoint($bp-sm) {
     font-size: 16px;
@@ -78,6 +78,7 @@ body {
   position: relative;
 
   // I used psuedo elements to add gradients on the sides of the thumb scroller. Visually it helps to tell the user there is more to scroll to, but if they don't show up it's not the end of the world.
+
   &:before {
     position: absolute;
     left: 0;
@@ -144,6 +145,11 @@ body {
       @include aspect-ratio-breakpoint(50px * $i, $default-aspect-ratio);
     }
   }
+}
+
+.slide-caption {
+  text-align: left;
+  white-space: normal;
 
   .attribution {
     font-size: .8em;
@@ -151,10 +157,7 @@ body {
   }
 }
 
-.slide-caption {
-  text-align: left;
-  white-space: normal;
-}
+
 
 .thumbs {
   @extend %side-scroll;
@@ -187,7 +190,7 @@ body {
 
   }
   
-  // A visual flourish to add focus to the thumbnail that is being hovered over and in some cases touched 
+  // A visual flourish to add focus to the thumbnail that is being hovered over and in some cases touched. Could use a psuedo element instead of a span if I abandoned the transition rule.
   .mask {
     position: absolute;
     top: 0;
