@@ -1,0 +1,56 @@
+<!DOCTYPE html> <!-- grabbed HTML5 Boilerplate and stripped it down -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>Image Gallery</title>
+
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="image-gallery"> <!-- semantic class names -->
+            <script id="image-gallery" type="text/template">
+                
+                <ul class="slides">
+                {{#photos}}
+                    <li id="{{@index}}" class="slide">
+                        <figure>
+                            <img alt="{{title}}" src="{{src}}">
+                            <figcaption class="slide-caption">
+                                <p>{{description}}</p>
+                                {{#if attribution}}
+                                    <span class="attribution">Photo: {{attribution}}</span>
+                                {{/if}}
+                            </figcaption>
+                        </figure>
+                    </li>
+                {{/photos}}
+                </ul>
+
+                <ul class="thumbs">
+                {{#photos}}
+                    <li class="thumb">
+                        <a href="#{{@index}}">
+                            <img alt="{{description}}" src="{{src}}">
+                            <span class="mask"></span>
+                        </a>
+                    </li>
+                {{/photos}}
+                </ul>
+
+                <h1 class="page-title">{{gallery-title}}</h1>
+
+            </script>
+        </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <!-- When I realized there was not a consistent usable identifier in the JSON I switched from Mustache to Handlebars so I could make use of @index for the link targets. I also ended up using it for a conditional statement to display the attribution -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.min.js"></script>
+
+        <!-- grabbing the JSON info -->
+        <script src="js.js"></script>
+    </body>
+</html>
