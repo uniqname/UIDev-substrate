@@ -1,8 +1,23 @@
-UIDev-substrate
-===============
+# Notes
 
-Clone this repo and create a responsive image gallery using the gallery.json file for data. Include and/or create what ever other resources you may need then submit a pull request. 
+- [jQuery sample article](http://iviewsource.com/codingtutorials/introduction-to-javascript-templating-with-mustache-js/)
+- After realizing there wasn't a consistent usable identifier in the json file I switched from Mustache to Handlebars so I could use `{{@index}}` for the link targets.
+- [date helper](https://gist.github.com/elidupuis/1468937)
+- [imagesLoaded](http://desandro.github.com/imagesloaded/)
 
-Make sure to document your decision process in your code and elaborate on challenges and solutions in your commit messages and pull requests.
+function adaptiveResize() {
+    var $h, $target;
+    $target = $('.slide-img');
+    $target.each(function() {
+        $h = $('.slide-img-container').css('height');
+            $target.css('max-height', $h );
+    });
+}
 
-Keep in mind, this is more about problem solving rather than strictly skill with code. Highlight areas you are strong in, but don't sweat any weaker areas too much.
+$(window).load(function() {
+    adaptiveResize();
+});
+  
+$(window).resize(function() {
+    adaptiveResize();
+});

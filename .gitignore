@@ -1,0 +1,15 @@
+# Ignore OS generated files.
+.DS_Store
+ehthumbs.db
+Thumbs.db
+._*
+
+# Ignore local development files.
+.sass-cache/
+
+# Ignore Sublime Text files
+*.sublime-project
+*.sublime-workspace
+
+# Ignore CK JS
+*-ck.js
