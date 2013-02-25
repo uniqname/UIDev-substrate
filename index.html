@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="image-gallery">
+        <div class="image-gallery"> <!-- semantic class names -->
             <script id="image-gallery" type="text/template">
                 
                 <ul class="slides">
@@ -18,7 +18,7 @@
                     <li id="{{@index}}" class="slide">
                         <figure>
                             <img alt="{{title}}" src="{{src}}">
-                            <figcaption>
+                            <figcaption class="slide-caption">
                                 <p>{{description}}</p>
                                 {{#if attribution}}
                                     <span class="attribution">Photo: {{attribution}}</span>
@@ -46,8 +46,11 @@
         </div>
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <!-- When I realized there was not a consistent usable identifier in the JSON I switched from Mustache to Handlebars so I could make use of @index for the link targets. I also ended up using it for a conditional statement to display the attribution -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.min.js"></script>
-        <script src="//raw.github.com/desandro/imagesloaded/master/jquery.imagesloaded.min.js"></script>
+
+        <!-- grabbing the JSON info -->
         <script src="js.js"></script>
     </body>
 </html>

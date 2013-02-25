@@ -1,14 +1,18 @@
-// Vars
-
 @import "compass";
-@import "breakpoint";
 
-$breakpoint-to-ems: true;
+// ====
+// VARS
+// ====
+
+// Breakpoint for media directives
+
+@import "breakpoint";
 
 $bp-sm:               500px;
 $bp-med:              800px;
 $bp-lrg:              1100px;
 
+// Colors
 
 $white:             hsl(0, 0, 100%);
 $med-grey:          hsl(0, 0, 40%);
@@ -18,9 +22,14 @@ $primary-color:     $med-grey;
 $secondary-color:   $white;
 $tertiary-color:    $light-grey;
 
+// Other
 
 $gutter: .5em;
 
+// Adam told me to take a look at Cory's "Javascript-less-Gallery" and I liked the idea of making a responsive version of that idea. The biggest challenge was how to manage the disparity in height between landscape and portrait images. CSS is famously difficult in terms of managing height responsively. You can see on line 138 how I used the following variable and mixins in conjuction with a for loop to create an array of media queries to handle max-height. It's admittedly tied to a single image aspect ratio, so I made that easy to change with a single variable. While it added 2 KB to the compiled file, there was almost no difference upon gzipping.
+
+$tv-ratio:                .75;
+$default-aspect-ratio:    $tv-ratio;
 
 @mixin aspect-ratio($width, $percent-height) {
   max-width: 100%;
@@ -33,8 +42,10 @@ $gutter: .5em;
   }
 }
 
-$tv-ratio:                .75;
-$default-aspect-ratio:    $tv-ratio;
+// =====
+// RULES
+// =====
+
 
 // Base
 
@@ -44,7 +55,7 @@ body {
   background: $secondary-color;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 14px;
-  color: $primary-color;
+  color: $primary-color; // Covering my bases in case there is a user defined background color other than white
 
   @include breakpoint($bp-sm) {
     font-size: 16px;
@@ -59,110 +70,14 @@ body {
   }
 }
 
-%side-scroll {
-  overflow: hidden;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.slides {
-  @extend %side-scroll;
-  margin: 0 $gutter $gutter;
-  overflow: hidden;
-}
-
-.slide {
-  display: inline-block;
-  width: 100%;
-  height: auto;
-  padding-top: $gutter;
-  vertical-align: top;
-  text-align: center;
-
-  @include breakpoint($bp-lrg) {
-    padding-top: $gutter * 4;
-  }
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    height: auto;
-
-    @for $i from 30 to 40 {
-      @include aspect-ratio-breakpoint(10px * $i, $default-aspect-ratio);
-    }
-
-    @for $i from 8 through 24 {
-      @include aspect-ratio-breakpoint(50px * $i, $default-aspect-ratio);
-    }
-  }
-
-  figcaption {
-    text-align: left;
-    white-space: normal;
-  }
-  .attribution {
-    font-size: .8em;
-    color: $tertiary-color;
-  }
-}
-
-.thumbs {
-  position: relative;
-  @extend %side-scroll;
-  padding-right: $gutter/2;
-  margin-bottom: $gutter;
-  z-index: 5;
-}
-
-.thumb {
-  position: relative;
-  display: inline-block;
-  margin-right: $gutter/2;
-
-  &:first-child {
-    margin-left: $gutter;
-  }
-
-  img {
-    height: 4em;
-    width: auto;
-
-    @include breakpoint($bp-sm) {
-      height: 5em;
-    }
-
-    @include breakpoint($bp-med) {
-      height: 6em;
-    }
-
-    @include breakpoint($bp-lrg) {
-      height: 7em;
-    }
-
-  }
-
-  .mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparentize($secondary-color, .7);
-    @include transition();
-
-    &:hover,
-    &:active {
-      background: none;
-    }
-  }
-}
+// Everything else
 
 .image-gallery {
   max-width: $bp-lrg;
   margin: auto;
   position: relative;
 
+  // I used psuedo elements to add gradients on the sides of the thumb scroller. Visually it helps to tell the user there is more to scroll to, but if they don't show up it's not the end of the world.
   &:before {
     position: absolute;
     left: 0;
@@ -190,4 +105,101 @@ body {
   font-style: italic;
   font-size: 1.5em;
   margin: 0 $gutter;
+}
+
+%side-scroll {
+  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.slides {
+  @extend %side-scroll;
+  margin: 0 $gutter $gutter;
+}
+
+.slide {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  padding-top: $gutter;
+  vertical-align: top;
+  text-align: center;
+
+  @include breakpoint($bp-lrg) {
+    padding-top: $gutter * 4;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+
+    @for $i from 30 to 40 {
+      @include aspect-ratio-breakpoint(10px * $i, $default-aspect-ratio);
+    }
+
+    // After 400px it wasn't important for the media directives to be as frequent
+    @for $i from 8 through 24 {
+      @include aspect-ratio-breakpoint(50px * $i, $default-aspect-ratio);
+    }
+  }
+
+  .attribution {
+    font-size: .8em;
+    color: $tertiary-color;
+  }
+}
+
+.slide-caption {
+  text-align: left;
+  white-space: normal;
+}
+
+.thumbs {
+  @extend %side-scroll;
+  padding: 0 $gutter/2 0 $gutter;
+  margin-bottom: $gutter;
+  z-index: 5;
+}
+
+.thumb {
+  position: relative;
+  display: inline-block;
+  margin-right: $gutter/2;
+
+  img {
+    height: 4em;
+    width: auto;
+
+    // Bumping the size of the thumbs more dramatically as the window widens
+    @include breakpoint($bp-sm) {
+      height: 5em;
+    }
+
+    @include breakpoint($bp-med) {
+      height: 6em;
+    }
+
+    @include breakpoint($bp-lrg) {
+      height: 7em;
+    }
+
+  }
+  
+  // A visual flourish to add focus to the thumbnail that is being hovered over and in some cases touched 
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparentize($secondary-color, .7);
+    @include transition();
+
+    &:hover,
+    &:active {
+      background: none;
+    }
+  }
 }
