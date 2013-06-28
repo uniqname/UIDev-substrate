@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Gallery</title>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link href="css/styles.css" type="text/css" rel="stylesheet" />
+	
+	<link href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" rel="stylesheet" />
+	<link href="css/jquery-mobile.css" type="text/css" rel="stylesheet" />
+	<link href="css/photoswipe.css" type="text/css" rel="stylesheet" />
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+	<script type="text/javascript" src="lib/klass.min.js"></script>
+	<script type="text/javascript" src="lib/code.photoswipe-3.0.5.min.js"></script>
+	
+	
+	<script type="text/javascript">
+
+		/* Decided to grab the photswipe responsive gallery for a base.
+		   Added the json call with juery to load the images and image data.
+		   Constructed the unordered list (required by photoswipe) than appended it to the #Gallery element
+		   Used Jquery mobile so that this will not only be responsive but will also function across devices with swipe capabilities (was going to add mouse wheel and keyboard arrows but thought that might be overkill.
+		   Oh FYI the json file that was included in this project had some missing and some improperly formatted data. There was an image that did not have a title defined as well as a few that were not title case. I would have put checks in the code to correct this but opted to change these items in the json file itself as data errors really should be corrected at the data source.
+		   Enjoy =)
+		 */
+		(function(window, $, PhotoSwipe){
+            jQuery(document).ready(function(){
+                    var items=[];
+                    jQuery.getJSON('gallery.json',function(data){
+                        jQuery.each(data.photos,function(key,val){
+                            items.push('<li><a href="' + val.src + '"><img src="'+ val.src +'" alt="'+ val.title+' : '+val.description+'"/></a></li>');
+                            });
+                        jQuery('<ul/>', {
+                                'class': 'gallery',
+                                'id': 'Gallery',
+                                    html: items.join('')
+                                      }).appendTo('#Gallery1');
+							photoSwipeInstance = jQuery("ul.gallery a").photoSwipe({});
+                    });
+
+            });
+		}(window, window.jQuery, window.Code.PhotoSwipe));
+	</script>
+    <style>
+	
+	</style>
+	
+</head>
+<body>
+
+<div data-role="page" data-add-back-btn="true" id="Gallery1" class="gallery-page">
+<div id="header_logo">
+  <a class="url fn org hiddenText" href="http://www.nationalgeographic.com/">National Geographic Society</a>
+</div>
+</div>
+</body>
+</html>
+
