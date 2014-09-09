@@ -1,0 +1,19 @@
+.content {
+	display: flex;
+}
+
+.image {
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	display: inline;
+}
+
+.image img {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.description{
+	display: inline-block;
+}
