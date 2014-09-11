@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Gallery</title>
+        <!--Style definitions-->
+        <style type="text/css">
+            body {
+                color: #665544;
+                background-color: #d4d0c6;                
+                font-family: Georgia, "Times New Roman", serif;
+                text-align: center;}
+            .wrapper { /* Frame for the whole screen*/
+                width: 80%;
+                margin:  auto; }             
+            .entry {   /*Main container of images*/
+                width: 220px;;
+                float: left;
+                margin: 10px;
+                height: auto;                
+            }
+
+            figure {  /*Frame for images */
+                display: block;
+                width: 202px;
+                height: 170px;
+                background-color: #e7e3d8;
+                padding: 9px;
+                text-align: left;}
+
+            figure img { /*Component thas has an image*/
+                width: 200px;
+                height: 150px;
+                border: 1px solid #d6d6d6;}
+
+            figcaption { /*Image´s label*/
+                padding-left: 20px;
+                background-repeat: no-repeat;}
+
+            img.ri /*Component responsible for making image larger considering the screen size*/
+            {
+                position: absolute;
+                max-width: 80%;
+                top: 10%;
+                left: 10%;
+                border-radius: 3px;
+                box-shadow: 0 3px 6px rgba(0,0,0,0.9);
+            }
+            img.ri:empty /*Component responsible for making image larger considering the screen size*/
+            {
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+
+            @media screen and (orientation: portrait) {  /*Component responsible for keeping image in different screen position*/     
+                img.ri{
+                    max-width: 70%;
+                }
+            }
+
+            @media screen and (orientation: landscape) {   /*Component responsible for keeping image in different screen position*/                 
+                img.ri{
+                    max-height: 70%;
+                }
+
+            </style>
+
+
+            <script type="text/javascript">
+                //Function responsible for amplyfing an image when user clicks on it 
+                function showLargeImage(imgSRC) {
+                    document.getElementById('largeImg').src = imgSRC; //Set src of the image
+                    document.getElementById('largeImgPanel').style.visibility = 'visible'; //Makes it visible
+                }
+                //Function responsible for hidding a large image
+                function hideIt(obj) {
+                    obj.style.visibility = 'hidden'; //Set image invisible
+                }
+
+            </script>
+        </head>        
+
+        <body>
+            <div class="wrapper" id="main">
+                <header>
+                    <h1>Famous Creatures</h1>
+                </header>
+                <div id="placeholder" >
+                    <!--The script below is responsible for accessing the JSON file and populating image frames-->
+                    <!--The logic of this piece of code is to implement the following structure as many times as the number of pictures in the JSON file:
+                        <div class="entry">
+                        <figure>
+                            <img style="cursor:pointer" src="imageSRCfromJSON" onclick="showLargeImage('imageSRCfromJSON');" />
+                            <figcaption>titleFromJSON</figcaption>
+                        </figure>
+                        </div>
+                    -->
+                    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+                    <script>
+                var imgBegin = "<div class=\"entry\"><figure><img style=\"cursor:pointer\" src=\"";
+                var imgClick = "\" onclick=\"showLargeImage('";
+                var imgEnd = "');\"/>";
+                //Looping to read JSON file
+                $.getJSON('gallery.json', function(gallery) {
+
+                    var galleryEntry = "";
+                    for (var i in gallery.photos) {
+                        galleryEntry += imgBegin + gallery.photos[i].src + imgClick + gallery.photos[i].src + imgEnd
+                                + "<figcaption>" + gallery.photos[i].title
+                                + "</figcaption> </figure></div>";
+                        document.getElementById("placeholder").innerHTML = galleryEntry; //Add the HTML structure found in the varible "galleryEntry" into the HTML body
+                    }
+                });</script>  
+                </div>
+
+                <!--Component responsible for hosting the large image that shows up when user clicks on the small image -->
+                <div id="largeImgPanel" style="cursor:pointer" onclick="hideIt(this);" > <!--When user clicks on the large image, "hideIt" closes it  -->
+                    <img id="largeImg" class="ri" alt=""/> 
+                </div>
+            </div>
+        </body>
+    </html>
