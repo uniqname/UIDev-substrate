@@ -1,0 +1,58 @@
+/*-----Prevents iPhone from resizing in landscape mode -----*/
+html {-webkit-text-size-adjust: none; }
+
+/*-----BODY -----*/
+body {
+	background-color: #414141;
+	font-size: 16px;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
+}
+
+
+/*-----WRAPPERS -----*/
+
+div#navWrapper, div#headWrapper, div#contentWrapper, div#footerWrapper {
+	min-width: 320px;
+}
+
+article {
+	width: 96%;
+	margin: .9em 2%;	
+}
+
+article img {
+	width: 98%;
+}
+
+article.gallery {
+	width: 96%;
+	margin: .9em 2%;
+	
+}
+
+a:link {
+	text-decoration:none;
+	color:095979;
+}
+
+figcaption {
+	color:#E3DEDE;
+	padding-top:5px;
+}
+
+h1 {
+	font-size:2.7em;
+	color:#9C9C9C;
+	padding:2.1%
+}
+
+
+/*----- FOOTER -----*/
+
+/*----- OTHER -----*/
+.keepOpen {
+	clear: both;	
+}
+Window size: x 
+Viewport size: x
