@@ -1,0 +1,38 @@
+@media only screen and (min-width: 600px) {
+/*-----BODY -----*/
+	body {}
+
+
+/*-----CONTENT -----*/
+
+article img {
+	float:left;
+	width: 98%;
+}
+
+
+article.gallery {
+	float:left;
+	width: 44%;
+}
+
+h1 {
+	font-size:4em;
+}
+
+
+
+div.row {
+	clear: both;
+}
+
+figcaption {
+	padding-top:11px;
+}
+
+/*----- FOOTER -----*/
+
+	
+}
+Window size: x 
+Viewport size: x
