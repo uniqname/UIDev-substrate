@@ -1,0 +1,45 @@
+@media only screen and (min-width: 941px) {
+/*-----BODY -----*/
+	body {}
+
+
+
+
+
+
+/*-----CONTENT -----*/
+
+
+#content {
+	margin: 0 auto;
+	max-width: 1040px;
+	width:940px;
+	margin: 0 auto 0 auto;	
+}
+
+h1 {
+	font-size:6em;
+}
+
+
+div#container {
+	width:940px;
+	margin: 0 auto 0 auto;
+	
+}
+
+
+div.row {
+	clear: both;
+}
+
+figcaption {
+	padding-top:11px;
+}
+
+
+
+} 
+Window size: x 
+Viewport size: x
+
