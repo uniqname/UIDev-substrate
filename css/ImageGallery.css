@@ -45,6 +45,7 @@ ul {
 .caption-title {
     color: #333;
     font-size: 20px;
+    text-transform: capitalize;
 }
 .caption-attribution {
     font-style: italic;
