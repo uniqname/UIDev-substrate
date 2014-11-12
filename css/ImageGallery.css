@@ -70,7 +70,7 @@ ul {
     cursor: pointer;
     background-image: url(../img/arrow-left.png);
     background-repeat: no-repeat;
-    background-position: -40px 50%;
+    background-position: -35px 50%;
 }
 #next:hover {
     cursor: pointer;
