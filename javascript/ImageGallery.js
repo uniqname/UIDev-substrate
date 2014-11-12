@@ -1,4 +1,5 @@
 $(function () {
+  // create a global reference to our image collection
   var imgCollection;
 
   // get the image data
@@ -7,13 +8,13 @@ $(function () {
     success: function(data) {
       // initialize the Gallery class
       imgCollection = new Gallery(data);
-      console.log(data.photos);
 
       // render the images
       imgCollection.render();
     }
   });
 
+  // controller for the next and previous handlers
   $('#next, #prev').on('click', function () {
     var images = $('.image'),
         image = $('.image:visible'),
@@ -22,6 +23,7 @@ $(function () {
         nextIndex = imageIndex === lastIndex ? 0 : imageIndex + 1,
         prevIndex = imageIndex === 0 ? lastIndex : imageIndex - 1;
 
+    // hide the current image
     image.css({display: 'none'});
 
     // next picture
@@ -37,6 +39,7 @@ $(function () {
     }
   });
 
+  // Gallery class accepts a collection of images
   function Gallery(config) {
     // public variables
     this.galleryTitle = config.title;
@@ -68,6 +71,7 @@ $(function () {
           photos = this.getImageData(),
           images = '';
 
+      // add the images to gallery and render the content into the caption
       for (var i = 0; i < photos.length; i++) {
         images += '<img src="' + photos[i].src + '" style="display:' + (i !== 0 ? 'none' : 'inline-block') + '" class="image" />';
       }
