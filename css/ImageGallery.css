@@ -1,0 +1,128 @@
+html, body {
+    margin: 0;
+    font: 100 16px/20px helvetica,arial,verdana,sans-serif;
+    color: #666;
+    background-color: #204056;
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#gallery {
+    height: 400px;
+    width: 600px;
+    position: relative;
+    background-color: #fff;
+    padding: 5px;
+    margin: 10px auto;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#gallery img {
+    max-height: 400px;
+    max-width: 600px;
+}
+#images {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+#caption {
+    min-height: 80px;
+    width: 590px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 13px;
+}
+.caption-title {
+    color: #333;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+.caption-attribution {
+    font-style: italic;
+    color: #999;
+}
+#prev {
+    left: -60px;
+    top: 0;
+    height: 100%;
+    width: 100px;
+    position: absolute;
+    z-index: 1000;
+}
+#next {
+    right: -60px;
+    top: 0;
+    height: 100%;
+    width: 100px;
+    position: absolute;
+    z-index: 1000;
+}
+#prev:hover {
+    cursor: pointer;
+    background-image: url(../img/arrow-left.png);
+    background-repeat: no-repeat;
+    background-position: -35px 50%;
+}
+#next:hover {
+    cursor: pointer;
+    background-image: url(../img/arrow-right.png);
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+}
+
+.list-item {
+    padding: 10px 8px;
+}
+.list-item:hover {
+    background-color: #39D1B4 !important;
+    color: #fff;
+    cursor: pointer;
+}
+.list-item:nth-child(even) {
+    background-color: #F1F2F2;
+}
+
+/* Smartphones (portrait and landscape) */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    #gallery {
+        width: calc(100% - 120px);
+        height: 40em;
+        max-width: 50em;
+    }
+    #gallery img {
+        max-height: 50em;
+        max-width: 50em;
+    }
+    #caption {
+        width: calc(100% - 80px);
+        font-size: 2.5em;
+        line-height: 1em;
+        padding: 1em;
+    }
+    .caption-title {
+        font-size: 3em;
+        line-height: 1em;
+    }
+    #prev {
+        background-image: url(../img/arrow-left.png);
+        background-repeat: no-repeat;
+        background-position: -40px 50%;
+    }
+    #next {
+        background-image: url(../img/arrow-right.png);
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+    }
+}
