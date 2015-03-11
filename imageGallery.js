@@ -49,9 +49,9 @@ var gallery = {
 /*I have two designs that I could go with. 1) I could just have the JS generate an img tag for each item in the JSON or 2) I could have it generate one img tag and two buttons that would be used to cycle through the images.*/
 /*Lets start by generating an img tag for each item.*/
 function generateGalleryList(){
-	var imgHTML;
+	var imgHTML = "";
 	for(x = 0; x < gallery.photos.length; x++){
-		imgHTML += ("<img src='" + gallery.photos.src + "'>");
+		imgHTML += ("<img src='" + gallery.photos[x].src + "'>");
 	}
 	document.getElementById("galleryList").innerHTML = imgHTML;
 }
