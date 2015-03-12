@@ -1,8 +1,7 @@
 /*First we have to get the JSON so that we can parse through it. Instead of doing this I decided it would be easier to just make the JSON a local variable. */
-function initialize(){
-	generateGalleryList();
-}
-var gallery = {
+function currentImgController($scope){
+$scope.imageIndex = 0;
+$scope.gallery = {
     "gallery-title": "Famous Creatures",
      "photos": [{
         "attribution": "Carter Brown",
@@ -45,13 +44,13 @@ var gallery = {
         "title": "Bird is the word",
         "src": " img/bird.jpeg"
     }]
-};
-/*I have two designs that I could go with. 1) I could just have the JS generate an img tag for each item in the JSON or 2) I could have it generate one img tag and two buttons that would be used to cycle through the images.*/
-/*Lets start by generating an img tag for each item.*/
-function generateGalleryList(){
-	var imgHTML = "";
-	for(x = 0; x < gallery.photos.length; x++){
-		imgHTML += ("<img src='" + gallery.photos[x].src + "'>");
-	}
-	document.getElementById("galleryList").innerHTML = imgHTML;
 }
+}
+/*$scope.imgList = "";
+	for(x = 0; x < $scope.gallery.photos.length; x++){
+		imgList += ("<div class='imageContainer'><img src='" + $scope.gallery.photos[x].src + "'></div>");
+	}
+}*/
+/*I have two designs that I could go with. 1) I could just have the JS generate an img tag for each item in the JSON or 2) I could have it generate one img tag and two buttons that would be used to cycle through the images.*/
+/*Lets start by generating an img tag for each item. I'm not sure if this is the best way to do this but it gets the job done.*/
+
