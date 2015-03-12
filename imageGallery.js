@@ -1,6 +1,5 @@
 /*First we have to get the JSON so that we can parse through it. Instead of doing this I decided it would be easier to just make the JSON a local variable. */
 function currentImgController($scope){
-$scope.imageIndex = 0;
 $scope.gallery = {
     "gallery-title": "Famous Creatures",
      "photos": [{

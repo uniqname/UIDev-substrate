@@ -7,12 +7,12 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 </head>
 <body>
-<div ng-app="" ng-controller="currentImgController">
+<div ng-app="" ng-controller="currentImgController" ng-init="imageIndex=0">
 <h2 id="currentImageTitle"></h2>
-<img id="currentImage" src="{{gallery.photos[imageIndex].src}}">
+<img id="currentImage" ng-src="{{gallery.photos[imageIndex].src}}">
 <div id="galleryList">
-    <div ng-repeat="x in gallery.photos" class="imageContainer">
-		<img src="{{ x.src }}">
+   <div ng-repeat="x in gallery.photos" class="imageContainer" ng-click="$parent.imageIndex = $index">
+		<img ng-src="{{ x.src }}">
 	</div>
 </div>
 </div>
