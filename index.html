@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-  <title>Image Gallery</title>
-  <script src="imageGallery.js"></script>
-</head>
-<body>
-<div id="galleryContainer">
-
-</div>
-</body>
-</html>
-=======
-	<title>Simple Gallery</title>
-	<script src="imageGallery.js"></script>	
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Image Gallery</title>
+	<script src="imageGallery.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 </head>
 <body>
-<div ng-app="" ng-controller="currentImgController" ng-init="imageIndex=0">
-<h2 id="currentImageTitle"></h2>
-<img id="currentImage" ng-src="{{gallery.photos[imageIndex].src}}">
-<div id="galleryList">
-   <div ng-repeat="x in gallery.photos" class="imageContainer" ng-click="$parent.imageIndex = $index">
-		<img ng-src="{{ x.src }}">
+	<div id="content">
+		<div ng-app="" ng-controller="currentImgController" ng-init="imageIndex=0" class="col-md-12">
+			<div id="currentImageContent" class="col-md-4">
+				<h2 id="currentImageTitle">{{gallery.photos[imageIndex].title}}</h2>
+				<h3>By: {{gallery.photos[imageIndex].attribution}}</h3>
+				<p>{{gallery.photos[imageIndex].description}}</p>
+			</div>
+			<div id="currentImageContainer" class="col-md-8"><img class="img-responsive" id="currentImage" ng-src="{{gallery.photos[imageIndex].src}}"></div>
+			<div id="galleryList" class="col-md-12">
+				<div ng-repeat="x in gallery.photos" class="imageContainer" ng-click="$parent.imageIndex = $index">
+					<img ng-src="{{ x.src }}">
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-</div>
 </body>
-
 </html>
->>>>>>> origin/master

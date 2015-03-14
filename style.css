@@ -1,3 +1,18 @@
+#content{
+	max-width: 850px;
+	margin: 0 auto;
+}
+#galleryList{
+	margin-top: 10px;
+}
+#currentImageContent{
+	height: 350px;
+	overflow: hidden;
+}
+#currentImageContainer{
+	height: 350px;
+	overflow: hidden;
+}
 .imageContainer{
 	width: 100px;
 	height: 100px;
