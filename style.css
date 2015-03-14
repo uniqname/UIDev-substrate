@@ -1,0 +1,17 @@
+.imageContainer{
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin: 5px;
+	overflow: hidden;
+	border: 1px solid #000;
+}
+.imageContainer:hover{
+	width: 110px;
+	height: 110px;
+	margin: 0px;
+}
+.imageContainer > img{
+	max-width: 160%;
+	margin-left: -20%
+}
