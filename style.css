@@ -1,6 +1,13 @@
+body{
+	background-color: gray;
+}
 #content{
-	max-width: 880px;
+	max-width: 950px;
 	margin: 0 auto;
+}
+#contentContainer{
+	background-color: white;
+	padding: 20px;
 }
 #galleryList{
 	margin-top: 10px;
