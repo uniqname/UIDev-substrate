@@ -1,0 +1,19 @@
+<div class="view-slide-in" data-ng-view="">
+    <h1>Gallery Title: {{gc.album["gallery-title"]}}</h1>
+    <!-- Main Image or Active Image -->
+
+        <h4 data-ng-show="gc.current.title"><strong>Title: {{gc.current.title}}</strong></h4>
+        <h3 data-ng-show="gc.current.attribution"><strong>Attribution: {{gc.current.attribution}}</strong></h3>
+        <p data-ng-show="gc.current.description">Description: {{gc.current.description}}</p>
+        <img class="active center-block" data-ng-src="{{gc.current.src}}" alt="{{gc.current.description}}"/>
+</div>
+        <hr/>
+<div id="thmbs">
+    <ul id="thmbList">
+        <li data-ng-repeat="photo in gc.album.photos" >
+            <a href="#" data-ng-click="gc.setCurrent(photo)">
+                <img class="thmb center-block" data-ng-src="{{photo.src}}" alt="{{photo.description}}" />
+            </a>
+        </li>
+    </ul>
+</div>
