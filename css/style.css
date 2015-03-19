@@ -1,0 +1,154 @@
+body {
+    text-align:center;
+}
+
+p {
+    display:block;
+    width: 500px;
+    text-align: center;
+    margin: auto;
+    padding-bottom: 15px;
+}
+
+#thmbs {
+    width: 450px;
+    margin:0 auto;
+    overflow: auto;
+}
+
+img.thmb {
+    width: auto;
+    height: 80px;
+}
+
+img.active {
+    width: auto;
+    height: 300px;
+}
+ .ng-enter{
+     transition:0.75s;
+     opacity: 0;
+ }
+ .ng-enter-active{
+     opacity:1;
+ }
+ .ng-leave{
+     transition:0.75s;
+     opacity:1;
+ }
+ .ng-leave-active{
+     opactiy:0;
+ }
+
+ #thmbList {
+     white-space: nowrap;
+     margin: 0;
+ }
+
+ #thmbList li {
+     display: inline !important;
+     list-style-type: none;
+     padding-right:2px;
+     cursor: pointer;
+ }
+
+ #thmbList li:hover {
+     opacity: 0.75;
+ }
+
+ #thmbList li a {
+     padding: 0;
+     border: none;
+ }
+
+ #thmbList li a img {
+     display: inline;
+     padding: 0;
+ }
+
+ /*ngAnimate for ng-repeat */
+.repeat-animation.ng-enter,
+.repeat-animation.ng-leave,
+.repeat-animation.ng-move {
+  -webkit-transition: all linear 1s;
+  -moz-transition: all linear 1s;
+  -o-transition: all linear 1s;
+  transition: all linear 1s;
+
+  position:relative;
+  left:5px;
+}
+.repeat-animation.ng-enter {
+  opacity: 0;
+}
+.repeat-animation.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.repeat-animation.ng-leave {
+  opacity: 1;
+}
+.repeat-animation.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+.repeat-animation.ng-move {
+  left:2px;
+  opacity: 0.5;
+}
+.repeat-animation.ng-move.ng-move-active {
+  left:0;
+  opacity: 1;
+}
+
+ /*ngAnimate for ng-view */
+.view-slide-in.ng-enter {
+  transition: all 1s ease;
+  -webkit-transition:all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+
+  opacity:0.5;
+  position:relative;
+  opacity:0;
+  top:10px;
+  left:20px;
+}
+.view-slide-in.ng-enter {
+  opacity: 0;
+}
+.view-slide-in.ng-enter.ng-enter-active {
+  top:0;
+  left:0;
+  opacity: 1;
+}
+.view-slide-in.ng-leave.ng-leave-active{
+  top:5px;
+  left:5px;
+  opacity:1;
+}
+.view-slide-in.ng-leave{
+  top:0;
+  left:0;
+  opacity:0;
+}
+
+
+.show-setup {
+-webkit-transition: 1s linear all; /* Safari/Chrome */
+-moz-transition: 1s linear all; /* Firefox */
+-ms-transition: 1s linear all; /* IE10 */
+-o-transition: 1s linear all; /* Opera */
+transition: 1s linear all; /* Future Browsers */
+
+/* The animation preparation code */
+opacity: 0;
+}
+
+/*
+Keep in mind that you want to combine both CSS
+classes together to avoid any CSS-specificity
+conflicts
+*/
+.show-setup.show-start {
+/* The animation code itself */
+opacity: 1;
+}
