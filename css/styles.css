@@ -1,6 +1,7 @@
 body {
-    overflow: hidden;
+    overflow: none;
     background-color: #000000;
+    display
 }
 
 .slider {
@@ -15,6 +16,8 @@ body {
 
 .slide {
     position: absolute;
+    max-heigh: 100%;
+    max-width: 100%;
     top: 0;
     left: 0;
 }

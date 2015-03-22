@@ -1,20 +1,23 @@
-Skip to content
- This repository
-Explore
-Gist
-Blog
-Help
-@akendall akendall
+var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
 
- Watch 4
-  Star 53
- Fork 44simpulton/angular-photo-slider
- branch: master  angular-photo-slider/js/app.js
-Lukas Ruebbelkesimpulton on Mar 12, 2014 Updated to v 1.2.14 and changed addClass to beforeAddClass
-1 contributor
-RawBlameHistory     69 lines (58 sloc)  2.487 kb
-angular.module('website', ['ngAnimate', 'ngTouch'])
-    .controller('MainCtrl', function ($scope) {
+  ngModule.controller('MainCtrl', function ($scope, $http) {
+      // some difficulty implementing the json fiile into the scope
+      // $scope.slides = [];
+      // picInfo.success(function(data) {
+      //   debugger
+      //   $scope.foo = "Hello "+data.contentItem[0].username;
+      // });
+      debugger
+      $http.get('gallery.json').success(function(data) {
+        $scope.slides = data.photos;
+      });
+      // $.getJSON("gallery.json", function( data ) {
+        // gives cross origin because I am running from htlm, I will
+        // come back to this if I can't fix it in a different way
+        // I like the http.get better so I am using that but to get over
+        // the cross origin I npm installed http-services and ran the app
+        // through there.
+      // });
         $scope.slides = [
             {image: 'images/img00.jpg', description: 'Image 00'},
             {image: 'images/img01.jpg', description: 'Image 01'},
@@ -44,8 +47,8 @@ angular.module('website', ['ngAnimate', 'ngTouch'])
             $scope.direction = 'right';
             $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
         };
-    })
-    .animation('.slide-animation', function () {
+    });
+    ngModule.animation('.slide-animation', function () {
         return {
             beforeAddClass: function (element, className, done) {
                 var scope = element.scope();
@@ -80,6 +83,3 @@ angular.module('website', ['ngAnimate', 'ngTouch'])
             }
         };
     });
-
-Status API Training Shop Blog About
-© 2015 GitHub, Inc. Terms Privacy Security Contact

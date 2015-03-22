@@ -1,5 +1,3 @@
-<!-- The first thing that I decided to do was develope the slider
-using angularJs as a platform.  -->
 <!DOCTYPE html>
 <html ng-app="website">
 <head>
@@ -15,7 +13,8 @@ using angularJs as a platform.  -->
 <div class="container slider">
     <img ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage"
          ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
-         ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
+         ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.src}}">
+         <!-- the imgages are too big for the slider currently and some are smaller -->
 
     <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
     <a class="arrow next" href="#" ng-click="prevSlide()"></a>
@@ -30,7 +29,7 @@ using angularJs as a platform.  -->
     </nav>
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="libs/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-animate.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-touch.min.js"></script>
