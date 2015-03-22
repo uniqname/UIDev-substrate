@@ -1,16 +1,37 @@
 body {
     overflow: none;
     background-color: #000000;
-    display
+}
+
+.label-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+}
+
+.main{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.dis-span{
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .slider {
-    width: 800px;
+    width: 600px;
     height: 400px;
     overflow: hidden;
     position: relative;
-    background: #e6e6e6;
-    border: 20px solid #FFF;
+    /*background: #e6e6e6;*/
+    /*border: 20px solid #FFF;*/
     margin-top: 20px;
 }
 
@@ -129,4 +150,36 @@ NAV
 .dots .dot a.active {
     border-color: #FFF;
     background-color: transparent;
+}
+
+@media (max-width: 850px) {
+  .slider{
+    width:600px;
+  }
+}
+@media (max-width: 680px) {
+  .slider{
+    width:400px;
+    height:305px;
+  }
+  .label-wrapper{
+    width:400px;
+  }
+@media (max-width: 480px) {
+  .slider{
+    width:300px;
+    height:229px;
+  }
+  .label-wrapper{
+    width:300px;
+  }
+}
+@media (max-width: 360px) {
+  .slider{
+    width:300px;
+    height:229px;
+  }
+  .label-wrapper{
+    width:300px;
+  }
 }

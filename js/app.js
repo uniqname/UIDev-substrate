@@ -7,8 +7,8 @@ var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
       //   debugger
       //   $scope.foo = "Hello "+data.contentItem[0].username;
       // });
-      debugger
       $http.get('gallery.json').success(function(data) {
+        $scope.discription = data.photos[0].description;
         $scope.slides = data.photos;
       });
       // $.getJSON("gallery.json", function( data ) {
@@ -18,34 +18,34 @@ var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
         // the cross origin I npm installed http-services and ran the app
         // through there.
       // });
-        $scope.slides = [
-            {image: 'images/img00.jpg', description: 'Image 00'},
-            {image: 'images/img01.jpg', description: 'Image 01'},
-            {image: 'images/img02.jpg', description: 'Image 02'},
-            {image: 'images/img03.jpg', description: 'Image 03'},
-            {image: 'images/img04.jpg', description: 'Image 04'}
-        ];
 
         $scope.direction = 'left';
         $scope.currentIndex = 0;
 
+        $scope.setDescription = function(index){
+          $scope.discription = $scope.slides[index].description;
+        }
+
         $scope.setCurrentSlideIndex = function (index) {
-            $scope.direction = (index > $scope.currentIndex) ? 'left' : 'right';
-            $scope.currentIndex = index;
+          $scope.direction = (index > $scope.currentIndex) ? 'left' : 'right';
+          $scope.currentIndex = index;
+          $scope.setDescription(index);
         };
 
         $scope.isCurrentSlideIndex = function (index) {
-            return $scope.currentIndex === index;
+          return $scope.currentIndex === index;
         };
 
         $scope.prevSlide = function () {
-            $scope.direction = 'left';
-            $scope.currentIndex = ($scope.currentIndex < $scope.slides.length - 1) ? ++$scope.currentIndex : 0;
+          $scope.direction = 'left';
+          $scope.currentIndex = ($scope.currentIndex < $scope.slides.length - 1) ? ++$scope.currentIndex : 0;
+          $scope.setDescription($scope.currentIndex);
         };
 
         $scope.nextSlide = function () {
-            $scope.direction = 'right';
-            $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
+          $scope.direction = 'right';
+          $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
+          $scope.setDescription($scope.currentIndex);
         };
     });
     ngModule.animation('.slide-animation', function () {

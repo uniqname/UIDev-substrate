@@ -4,29 +4,32 @@
     <meta charset="utf-8">
     <title>AngularJS Animate Slider</title>
 
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body ng-controller="MainCtrl">
 
-<div class="container slider">
-    <img ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage"
-         ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
-         ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.src}}">
-         <!-- the imgages are too big for the slider currently and some are smaller -->
+<div class="main">
+  <div class="container slider">
+      <img ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage"
+           ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
+           ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.src}}"/>
+           <!-- the imgages are too big for the slider currently and some are smaller -->
 
-    <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
-    <a class="arrow next" href="#" ng-click="prevSlide()"></a>
-    <nav class="nav">
-        <div class="wrapper">
-            <ul class="dots">
-                <li class="dot" ng-repeat="slide in slides">
-                    <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                       ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
-            </ul>
-        </div>
-    </nav>
+      <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+      <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+      <nav class="nav">
+          <div class="wrapper">
+              <ul class="dots">
+                  <li class="dot" ng-repeat="slide in slides">
+                      <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                         ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
+              </ul>
+          </div>
+      </nav>
+  </div>
+  <div class="label-wrapper"><p type=text class="dis-span">{{discription}}</p></div>
 </div>
 
 <script src="libs/jquery.min.js"></script>
