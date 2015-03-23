@@ -15,7 +15,7 @@ var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
         // gives cross origin because I am running from htlm, I will
         // come back to this if I can't fix it in a different way
         // I like the http.get better so I am using that but to get over
-        // the cross origin I npm installed http-services and ran the app
+        // the cross origin problem I npm installed http-services and ran the app
         // through there.
       // });
 
