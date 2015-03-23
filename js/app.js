@@ -1,6 +1,6 @@
 var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
 
-  ngModule.controller('MainCtrl', function ($scope, $http, $timeout) {
+  ngModule.controller('MainCtrl', function ($document, $scope, $http, $timeout) {
       // some difficulty implementing the json fiile into the scope
       // $scope.slides = [];
       // picInfo.success(function(data) {
@@ -24,6 +24,7 @@ var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
 
         $scope.setCurrentSlide = function(index){
           $scope.currentSlide = $scope.slides[index];
+          // sliderFunc();
         }
 
         $scope.setCurrentSlideIndex = function (index) {
@@ -54,11 +55,17 @@ var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
         var sliderFunc=function(){
     			timer=$timeout(function(){
     				$scope.prevSlide();
-    				timer=$timeout(sliderFunc,5000);
-    			},5000);
+    				timer=$timeout(sliderFunc,2000);
+    			},4000);
     		};
 
     		sliderFunc();
+
+        $($document).bind('mouseup',stopTimeout);
+
+        function stopTimeout(){
+          $timeout.cancel(timer);
+        }
 
     		$scope.$on('$destroy',function(){
     			$timeout.cancel(timer);

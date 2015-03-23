@@ -188,16 +188,19 @@ NAV
 @media (max-width: 480px) {
   .slider{
     width:300px;
-    height:229px;
+    height:200px;
   }
   .label-wrapper{
     width:300px;
+  }
+  .author{
+    font-size: 10px;
   }
 }
 @media (max-width: 360px) {
   .slider{
     width:300px;
-    height:229px;
+    height:200px;
   }
   .label-wrapper{
     width:300px;
