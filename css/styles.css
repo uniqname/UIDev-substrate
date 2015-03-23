@@ -1,6 +1,21 @@
+.author{
+  margin-left: 10px;
+  color:#ffffff;
+  font-size: 16px;
+  z-index: 1000;
+  font-family: cursive;
+}
+
 body {
     overflow: none;
     background-color: #000000;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .label-wrapper{
@@ -23,22 +38,21 @@ body {
   text-align: center;
   font-size: 16px;
   line-height: 20px;
+  font-family:Lucida Sans Unicode;
 }
 
 .slider {
-    width: 600px;
-    height: 400px;
+    width: 700px;
+    height: 450px;
     overflow: hidden;
     position: relative;
-    /*background: #e6e6e6;*/
-    /*border: 20px solid #FFF;*/
     margin-top: 20px;
 }
 
 .slide {
     position: absolute;
-    max-heigh: 100%;
     max-width: 100%;
+    min-width: 100%;
     top: 0;
     left: 0;
 }
@@ -152,6 +166,12 @@ NAV
     background-color: transparent;
 }
 
+@media (max-width: 1050px) {
+  .slider{
+    width:600px;
+    height:400px;
+  }
+}
 @media (max-width: 850px) {
   .slider{
     width:600px;

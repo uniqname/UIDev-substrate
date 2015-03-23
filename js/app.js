@@ -1,6 +1,6 @@
 var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
 
-  ngModule.controller('MainCtrl', function ($scope, $http) {
+  ngModule.controller('MainCtrl', function ($scope, $http, $timeout) {
       // some difficulty implementing the json fiile into the scope
       // $scope.slides = [];
       // picInfo.success(function(data) {
@@ -8,7 +8,7 @@ var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
       //   $scope.foo = "Hello "+data.contentItem[0].username;
       // });
       $http.get('gallery.json').success(function(data) {
-        $scope.discription = data.photos[0].description;
+        $scope.currentSlide = data.photos[0];
         $scope.slides = data.photos;
       });
       // $.getJSON("gallery.json", function( data ) {
@@ -22,14 +22,14 @@ var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
         $scope.direction = 'left';
         $scope.currentIndex = 0;
 
-        $scope.setDescription = function(index){
-          $scope.discription = $scope.slides[index].description;
+        $scope.setCurrentSlide = function(index){
+          $scope.currentSlide = $scope.slides[index];
         }
 
         $scope.setCurrentSlideIndex = function (index) {
           $scope.direction = (index > $scope.currentIndex) ? 'left' : 'right';
           $scope.currentIndex = index;
-          $scope.setDescription(index);
+          $scope.setCurrentSlide(index);
         };
 
         $scope.isCurrentSlideIndex = function (index) {
@@ -39,14 +39,30 @@ var ngModule = angular.module('website', ['ngAnimate', 'ngTouch']);
         $scope.prevSlide = function () {
           $scope.direction = 'left';
           $scope.currentIndex = ($scope.currentIndex < $scope.slides.length - 1) ? ++$scope.currentIndex : 0;
-          $scope.setDescription($scope.currentIndex);
+          $scope.setCurrentSlide($scope.currentIndex);
         };
 
         $scope.nextSlide = function () {
           $scope.direction = 'right';
           $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
-          $scope.setDescription($scope.currentIndex);
+          $scope.setCurrentSlide($scope.currentIndex);
         };
+
+        // Adding timeout function so that the slider will auto scroll
+        var timer;
+
+        var sliderFunc=function(){
+    			timer=$timeout(function(){
+    				$scope.prevSlide();
+    				timer=$timeout(sliderFunc,5000);
+    			},5000);
+    		};
+
+    		sliderFunc();
+
+    		$scope.$on('$destroy',function(){
+    			$timeout.cancel(timer);
+    		});
     });
     ngModule.animation('.slide-animation', function () {
         return {
