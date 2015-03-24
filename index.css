@@ -1,0 +1,18 @@
+@media (max-width: 767px) {
+    .carousel-caption {
+        color: black;
+        position: relative;
+        left: 0;
+        right: 0;
+    }
+
+    #carousel-indicators-container {
+        display: none;
+    }
+}
+
+
+.img-thumbnail {
+    width:auto;
+    height:140px;
+}
