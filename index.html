@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photo Gallery</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
+	<!-- I like to keep code modular so I stuck css for gallery in gallery directive folder -->
+	<link rel="stylesheet" type="text/css" href="src/directives/gallery/gallery.css">
+</head>
+<body ng-app="galleryApp" ng-cloak>
+
+<div ng-controller="appCtrl as appCtrl" class="container">
+	<div class="row">
+		<div class="col-md-12">
+			
+			<!-- passing the data from the controller into the ng-model of the gallery directive keeps better code separation rather than doing an http request from the gallery itself-->
+			<gallery ng-model="appCtrl.data"></gallery>
+			
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js"></script>
+<script type="text/javascript" src="src/index.js"></script>
+<script type="text/javascript" src="src/controllers/appController.js"></script>
+<script type="text/javascript" src="src/directives/gallery/galleryDirective.js"></script>
+</body>
+</html>
