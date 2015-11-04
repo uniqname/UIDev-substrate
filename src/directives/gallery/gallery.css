@@ -1,0 +1,73 @@
+/*organized alphabetically where it made sense*/
+.gallery {
+	position: relative;
+}
+.gallery-title {
+	text-align: center;
+}
+.gallery-navs {
+	position: absolute;
+	top: 12em;
+	width: 100%;
+	z-index: 1000;
+}
+.gallery-nav {
+	cursor: pointer;
+	display: inline-block;
+	font-size: 25px;
+	font-weight: bold;
+	height: 100%;
+	width: 20px;
+}
+.gallery-nav.disabled {
+	color: #aaa;
+	cursor: not-allowed;
+}
+
+.main.photo {
+	width: 100%
+}
+.photo {
+	display: inline-block;
+	text-align: center;
+}
+.photo .title {
+	min-height: 19px;
+}
+.photo img {
+	max-width: 248px;
+	max-height: 240px;
+}
+.photo.peripheral {
+	display: none;
+	overflow: hidden;
+	opacity: 0.5;
+}
+.photo.peripheral img{
+	max-width: 240px;
+	max-height: 180px;
+}
+@media (min-width: 768px) {
+	.main img {
+		max-width: 450px;
+		max-height: 310px;
+	}
+}
+@media (min-width: 992px) {
+	.main.photo.col-xs-6 {
+		width: 50%;
+	}
+	.photo.peripheral {
+		display: inline-block;
+	}
+	.photo.peripheral img {
+		max-width: 205px;
+		max-height: 150px;
+	}
+}
+@media (min-width: 1200px) {
+	.photo.peripheral img {
+		max-width: 250px;
+		max-height: 200px;
+	}
+}

@@ -1,0 +1,29 @@
+<!-- Using a little bit of custom styling and a lot of bootstrap, I'm able to make the gallery responsive. The majority of the work is taken care of with angular. adding a few media queries allows 
+me to get the image sizes right, and there you have it.-->
+<div class="gallery container-fluid">
+	<h2 class='gallery-title'>{{galleryCtrl.title}}</h2>
+	<div class="gallery-navs row">
+		<div class="gallery-nav pull-left" ng-class="{disabled:!galleryCtrl.previous.length}" ng-click="galleryCtrl.viewPrevious()"><span class="glyphicon glyphicon-menu-left"></span></div>	
+		<div class="gallery-nav pull-right" ng-class="{disabled:!galleryCtrl.next.length}" ng-click="galleryCtrl.viewNext()"><span class="glyphicon glyphicon-menu-right"></span></div>
+	</div>
+	
+	<div class="gallery-container row">
+		<div class="photo peripheral col-xs-3">
+			<img ng-src="{{photo.src}}" alt="{{photo.title}}" ng-repeat="photo in galleryCtrl.previous">
+		</div>
+		
+		<div class="main photo col-xs-6" ng-repeat="photo in galleryCtrl.viewableImages">
+			<h4 class="title">{{photo.title || 'Untitled'}}</h4>
+			<img ng-src="{{photo.src}}" alt="{{photo.title}}">
+			<div ng-if="photo.attribution">
+				<label for="credit">Credit:</label>
+				<span id="credit">{{photo.attribution}}</span>				
+			</div>
+			<p>{{photo.description}}</p>
+		</div>
+		
+		<div class="photo peripheral col-xs-3">
+			<img ng-src="{{photo.src}}" alt="{{photo.title}}" ng-repeat="photo in galleryCtrl.next">
+		</div>
+	</div>
+</div>
