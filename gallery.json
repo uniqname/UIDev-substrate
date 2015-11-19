@@ -1,5 +1,5 @@
 {
-    "gallery-title": "Famous Creatures",
+    "galleryTitle": "Famous Creatures",
      "photos": [{
         "attribution": "Carter Brown",
         "creation-data": "2009-01-08T19:20:30+01:00",
@@ -21,6 +21,7 @@
     }, {
         "attribution": "Creative Commons",
         "description": "Widely roumored to be the site of the elusive Durmstrang school for wizards, made famous (infamous?) in the works of renouned biographer J.K. Rowling's epic seven part expose on one Harry Potter, this lake in northern Russia Baikal region has long been known for it's magical properites and unexplained evnets.",
+        "title": "Baikal Russia",
         "src": " img/Northern_Baikal_Russia.jpeg"
     }, {
         "description": "This gentle giant of the land-based arachnids is a common house pet for a legion of adolesant and pre-adolesant boys.",
