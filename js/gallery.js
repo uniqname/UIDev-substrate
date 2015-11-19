@@ -12,7 +12,7 @@ function imagesContent(){
 					html += "<div class=\"portfolio-box-caption\">";
 					html += "<div class=\"portfolio-box-caption-content\">";
 						html += "<div class=\"project-category text-faded\">";
-							html += data.galleryTitle;
+							(data.photos[i].place == "true") ? html += "Famous Places" : html += data.galleryTitle;
 						html += "</div>";
 							html += "<div class=\"project-name\">";
 								html += data.photos[i].title;
