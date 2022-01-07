@@ -124,6 +124,7 @@ function Carousel() {
     ? e(
         "div",
         { className: "carousel center-aligned" },
+        e("h4", { className: "title" }, data["gallery-title"]),
         e("img", { src: data.photos[displayedImageIndex].src, ref: imageRef }),
         e(
           "div",
